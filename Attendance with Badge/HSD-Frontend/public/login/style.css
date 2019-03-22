@@ -1,0 +1,97 @@
+@font-face { font-family: HomeSchool; src: url('../Home School.otf'); } 
+@font-face { font-family: CambriaMath; src: url('../Cambria Math.ttf'); } 
+
+* {
+    font-family: Arial, Helvetica, sans-serif
+    
+}
+
+.email_other {
+    color:black;
+    font-family: CambriaMath;
+}
+
+/* Full-width inputs */
+input[type=password] {
+    width: calc(80px + 10vw);
+    padding: 14px 20px;
+    margin: 0 auto;
+    font-size: calc(10px + 0.5vw);
+    font-family: CambriaMath;
+}
+
+#email {
+    padding: 14px 20px;
+    width: calc(123px + 10vw);
+    margin: 0 auto;
+    font-size: calc(10px + 0.5vw);
+    font-family: CambriaMath;
+}
+
+/* Set a style for all buttons */
+button {
+    width: calc(100px + 5vw);
+    background-color: #40e0d0;
+    padding: 14px 20px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-family: CambriaMath;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    border: 3px solid #f1f1f1;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar1, #snackbar2, #snackbar3 {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #777; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    top: 10px; /* 30px from the top */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar1.show, #snackbar2.show, #snackbar3.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 10px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 10px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {top: 10px; opacity: 1;} 
+    to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {top: 10px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}

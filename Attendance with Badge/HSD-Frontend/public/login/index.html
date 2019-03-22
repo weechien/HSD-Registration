@@ -1,0 +1,67 @@
+<!doctype html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBiaJOMnGs11HgMJKQSvwKvWIv4aWf57zA",
+      authDomain: "hsd-registration.firebaseapp.com",
+      databaseURL: "https://hsd-registration.firebaseio.com",
+      projectId: "hsd-registration",
+      storageBucket: "hsd-registration.appspot.com",
+      messagingSenderId: "606557954166"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- Initialize Firebase -->
+  <script>
+    var unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      unsubscribe();
+      if(user) {
+        firebase.auth().signOut();
+      }
+    });
+  </script>
+</head>
+<body>
+  <div id="form">
+    <div class="container">
+      <div style="text-align: center; margin-top: 50px; margin-bottom: 40px; font-size: 50px; font-family: HomeSchool;">
+        HSD Login
+      </div>
+      <div style="text-align: center; margin-bottom: 30px">
+          <select id="email" name="emails" autofocus>
+            <option disabled selected style="display:none; color:#666666;" value="null">-- Select Email --</option>s
+            <option class="email_other" value="admin@hsd.com">admin@hsd.com</option>
+            <option class="email_other" value="attendance@hsd.com">attendance@hsd.com</option>
+            <option class="email_other" value="badge@hsd.com">badge@hsd.com</option>
+          </select>
+      </div>
+      
+      <div style="text-align: center; margin-bottom: 30px">
+        <input id="pass" type="password" placeholder="Enter Password" name="psw" required>
+      </div>
+      <div style="text-align: center;">
+        <button id="button">Login</button>
+      </div>
+    </div>
+  </form>
+
+  <div id="snackbar1">Please select an email</div>
+  <div id="snackbar2">Please enter a password</div>
+  <div id="snackbar3">Password invalid. Please try again.</div>
+
+  <script type="text/html" id="hit-template">
+    <div class="hit">
+      <h2 class="hit-Name">{{{_highlightResult.Name.value}}}</h2>
+    </div>
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</body>

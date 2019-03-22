@@ -1,0 +1,136 @@
+<!doctype html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.4/dist/instantsearch.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBiaJOMnGs11HgMJKQSvwKvWIv4aWf57zA",
+      authDomain: "hsd-registration.firebaseapp.com",
+      databaseURL: "https://hsd-registration.firebaseio.com",
+      projectId: "hsd-registration",
+      storageBucket: "hsd-registration.appspot.com",
+      messagingSenderId: "606557954166"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- Handle Account Status -->
+  <script>
+    firebase.auth().onAuthStateChanged(user => {
+      if(!user) {
+        window.location.href = 'https://hsd-registration.firebaseapp.com/login';
+      } else {
+        var email = firebase.auth().currentUser.email;
+        if (email === "attendance@hsd.com") {
+          window.location.href = 'https://hsd-registration.firebaseapp.com/attendance';
+        } else if (email === "badge@hsd.com") {
+          window.location.href = 'https://hsd-registration.firebaseapp.com/badge';
+        }
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1 id="hsdtitle" style="text-align: center;">HSD Admin</h1>
+    <button id="signout">Sign out</button>
+
+    <!-- Accordion -->
+    <div class="panel-group" id="accordion" style="width:calc(100px + 60vw); margin:5% auto;">
+      <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+          <h4 class="panel-title">
+            <h3 style="margin:0 auto; text-align:center; width:100%; font-family:CambriaMath; font-weight:bold; font-size:20px;">Stats</h3>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <!-- Progress bar - Attendance -->
+            <h4 style="margin: 0 auto; margin-top:30px; text-align:center; font-family:CambriaMath">Attendance</h3>
+            <div id="attendance-progress" class="progress" style="height:50px; margin:1% auto;">
+              <div id="attendance-bar" class="progress-bar progress-bar-striped active " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" 
+              style="width:0%; line-height:50px; font-size:20px; font-weight:bold; background-color: rgba(46,50,104,1);">
+                0%
+              </div>
+              <div id="attendance-bar-alt" class="progress-bar progress-bar-striped active " role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" 
+              style="width:100%; line-height:50px; font-size:20px; font-weight:bold; background-color: rgba(153,149,121,1)">
+                100%
+              </div>
+            </div>
+      
+            <!-- Progress bar - Badge -->
+            <h4 style="margin: 0 auto; margin-top:50px;text-align:center; font-family:CambriaMath">Badge</h3>
+            <div id="badge-progress" class="progress" style="height:50px; margin:1% auto; margin-bottom:30px;">
+              <div id="badge-bar" class="progress-bar progress-bar-striped active " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" 
+              style="width:0%; line-height:50px; font-size:20px; font-weight:bold; background-color: rgba(159,3,36,1);">
+                0%
+              </div>
+              <div id="badge-bar-alt" class="progress-bar progress-bar-striped active " role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" 
+              style="width:100%; line-height:50px; font-size:20px; font-weight:bold; background-color: rgba(153,149,121,1)">
+                100%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top:50px">
+       <input id="search-input" placeholder="Search" style="font-size: 20px">
+    </div>
+  </header>
+  <main style="margin-top:50px">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div id="hits" class="row"></div>
+    </div>
+    <div class="col-sm-1"></div>
+  </main>
+  <footer style="text-align: center" id="pagination"></footer>
+
+    <!-- The Modal -->
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" 
+    class="close" title="Close Modal">&times;</span>
+
+    <!-- Modal Content -->
+    <div class="modal-content animate">
+      <div class="container">
+        <div id="modalname"></div>
+        <div id="modalgroup"></div>
+        <div id="modalattd"></div>
+        <div id="modalbadge"></div>
+        <br/>
+
+        <button id="submitattendance" type="submit">Submit Attendance</button>
+        <button id="badgeclaimed" type="submit">Badge Claimed</button>
+        <br/>
+
+        <button id="removeattendance" type="submit">Remove Attendance</button>
+        <button id="badgeunclaimed" type="submit">Badge Unclaimed</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="snackbar1">Attendance has been submitted successfully</div>
+  <div id="snackbar2">Attendance has already been recorded</div>
+  <div id="snackbar3">Submission failed. Please try again.</div>
+  <div id="snackbar4">Attendance has yet to be recorded</div>
+  <div id="snackbar5">Badge has already been claimed</div>
+  <div id="snackbar6">Badge has been claimed successfully</div>
+  <div id="snackbar7">Attendance has been removed successfully</div>
+  <div id="snackbar8">Badge has yet to be claimed</div>
+  <div id="snackbar9">Badge claim has been removed successfully</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+  <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+  <script src="index.js"></script>
+</body>

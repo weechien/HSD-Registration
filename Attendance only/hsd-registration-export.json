@@ -1,0 +1,31 @@
+{
+  "attendance" : {
+   "GohWeeChien001": {
+      "Name": "Goh Wee Chien",
+      "Group": "001",
+      "Attendance": "false"
+   },
+   "ChngYuLi002": {
+      "Name": "Chng Yu Li",
+      "Group": "002",
+      "Attendance": "false"
+   },
+   "ChngYuMin003": {
+      "Name": "Chng Yu Min",
+      "Group": "003",
+      "Attendance": "false"
+   },
+   "ChngYuSing004": {
+      "Name": "Chng Yu Sing",
+      "Group": "004",
+      "Attendance": "false"
+   
+   }
+  },
+  "count" : {
+   "attendance_count": {
+      "registered": 0,
+      "unregistered": 4
+   }
+  }
+}

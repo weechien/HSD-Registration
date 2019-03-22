@@ -1,0 +1,85 @@
+<!doctype html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.4/dist/instantsearch.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBiaJOMnGs11HgMJKQSvwKvWIv4aWf57zA",
+      authDomain: "hsd-registration.firebaseapp.com",
+      databaseURL: "https://hsd-registration.firebaseio.com",
+      projectId: "hsd-registration",
+      storageBucket: "hsd-registration.appspot.com",
+      messagingSenderId: "606557954166"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- Handle Account Status -->
+  <script>
+    firebase.auth().onAuthStateChanged(user => {
+      if(!user) {
+        window.location.href = 'https://hsd-registration.firebaseapp.com/login';
+      } else {
+        var email = firebase.auth().currentUser.email;
+        if (email === "admin@hsd.com") {
+          window.location.href = 'https://hsd-registration.firebaseapp.com/admin';
+        } else if (email === "attendance@hsd.com") {
+          window.location.href = 'https://hsd-registration.firebaseapp.com/attendance';
+        }
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1 id="hsdtitle" style="text-align: center;">HSD Badge</h1>
+    <button id="signout">Sign out</button>
+    <div style="text-align: center; margin-top:50px">
+       <input id="search-input" placeholder="Search" style="font-size: 20px;">
+    </div>
+  </header>
+  <main style="margin-top:50px">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div id="hits" class="row"></div>
+    </div>
+    <div class="col-sm-1"></div>
+  </main>
+  <footer style="text-align: center" id="pagination"></footer>
+
+  <!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" 
+  class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <div class="modal-content animate">
+    <div class="container">
+      <div id="modalname"></div>
+      <div id="modalgroup"></div>
+      <div id="modalattd" style="margin-left:15px; display: inline-block;"></div>
+      <div id="modalbadge" style="margin-right:15px; display: inline-block;"></div>
+      <br/>
+
+      <button id="submitattendance" type="submit" autofocus>Badge Unclaimed</button>
+    </div>
+  </div>
+</div>
+
+<div id="snackbar1">Badge has been claimed successfully</div>
+<div id="snackbar2">Badge has already been claimed</div>
+<div id="snackbar3">Submission failed. Please try again.</div>
+<div id="snackbar4">Attendance has not been submitted</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+  <script src="index.js"></script>
+</body>

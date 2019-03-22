@@ -1,0 +1,337 @@
+/* GENERAL */
+@font-face { font-family: HomeSchool; src: url('../Home School.otf'); } 
+@font-face { font-family: CambriaMath; src: url('../Cambria Math.ttf'); } 
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+html {
+  overflow-y: scroll;
+  background: #FFF;
+}
+header, #no-results, footer {
+  width: 100%;
+  margin: 0 auto;
+}
+header h1 {
+  font-family:HomeSchool; 
+  font-size: calc(28px + 3.0vw);
+}
+footer {
+  clear: both;
+}
+
+/* HITS */
+#hits {
+  margin-bottom: 50px;
+}
+.hit:hover {
+  background-color: rgba(255, 204, 0, 0.6)
+}
+.hit {
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  text-align: center;
+}
+.hit-Name {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.hit-Group {
+  font-weight: bold;      
+}
+.hit-Attendance {
+  display: inline-block;
+  font-weight: bold;      
+  font-size: 15px;
+  margin: 0, auto;  
+  margin-right: 10px; 
+}
+.hit-Badge {
+  display: inline-block;
+  font-weight: bold;      
+  font-size: 15px;
+  margin: 0, auto;
+  margin-left: 10px;
+}
+
+.hit em {
+  font-style: normal;
+  color: #ff1111;
+  border-bottom: solid 1px rgba(244, 107, 91, 0.5);
+}
+
+#hsdtitle {
+  margin-top: calc(40px + 1.2vw);
+}
+
+/* Sign out button */
+#signout {
+  color: #666666;
+  font-size:calc(12px + 0.2vw);
+  width: calc(50px + 5.0vw);
+  height: calc(20px + 1.0vw);
+  top: calc(5px + 1.0vw);
+  right: calc(5px + 1.0vw);
+  position: absolute;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid #999999;
+}
+
+#signout:hover, #signout:active, #signout:checked, #signout:focus {
+  background-color: rgba(211, 211, 211, 0.3);
+}
+
+/* Search box */
+.ais-search-box {
+  display: inline-block;
+  position: relative;
+  height: 46px;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.ais-search-box--input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font: inherit;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #d4d8e3;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(85, 95, 110, .2);
+  box-shadow: 0 1px 1px 0 rgba(85, 95, 110, .2);
+  -webkit-transition: background .4s ease, -webkit-box-shadow .4s ease;
+  transition: box-shadow .4s ease, background .4s ease;
+  transition: box-shadow .4s ease, background .4s ease, -webkit-box-shadow .4s ease;
+  padding: 10px 10px 10px 35px;
+  vertical-align: middle;
+  white-space: normal;
+  height: 100%;
+  width: 100%
+}
+
+.ais-search-box--input:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0
+}
+
+.ais-search-box--reset {
+  fill: #bfc7d8;
+  top: calc(50% - 12px/2);
+  right: 13px
+}
+
+.ais-search-box--magnifier {
+  fill: #bfc7d8;
+  left: 12px;
+  top: calc(50% - 18px/2)
+}
+
+.ais-search-box--magnifier svg {
+  height: 18px;
+  width: 18px
+}
+
+/* Pagination */
+.ais-pagination {
+  background: #fff;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(85, 95, 110, .2);
+  box-shadow: 0 1px 1px 0 rgba(85, 95, 110, .2);
+  border: solid 1px #d4d8e3;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 8px 16px;
+  width: auto
+}
+
+.ais-pagination--item {
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  width: 28px
+}
+
+.ais-pagination--item:hover {
+  background: rgba(39, 81, 175, .1)
+}
+
+.ais-pagination--item__disabled {
+  color: #bbb;
+  opacity: .5;
+  pointer-events: none;
+  visibility: visible
+}
+
+.ais-pagination--item__active {
+  background: #3369e7
+}
+
+.ais-pagination--item__active .ais-pagination--link {
+  color: #fff
+}
+
+.ais-pagination--link {
+  color: #697782;
+  display: block;
+  text-decoration: none;
+  height: 100%;
+  width: 100%
+}
+
+.ais-pagination--link:hover {
+  color: #3369e7;
+  text-decoration: none
+}
+
+/* Items within the modal */
+.container {
+  text-align: center;
+  width: calc(200px + 15vw);
+}
+
+#modalname {
+  margin: 4% auto;
+  font-weight: bold;
+  font-size:calc(18px + 0.3vw);
+  font-family: CambriaMath;
+}
+
+#modalgroup {
+  margin: 4% auto;
+  font-weight: bold;      
+  font-size:calc(12px + 0.3vw);
+  font-family: CambriaMath;
+}
+
+#modalattd, #modalbadge {
+  margin: 0 8%;
+  font-weight: bold;      
+  font-size:calc(12px + 0.3vw);
+  font-family: CambriaMath;
+}
+
+#submitattendance {
+  background-color: #40e0d0;
+  margin: 4% auto;
+  width: calc(100px + 10.0vw);
+  height: 45px;
+  font-weight: bold;
+  font-size:calc(12px + 0.3vw);
+  font-family: CambriaMath;
+  border-radius: 5px;
+}
+
+#submitattendance:hover {
+  opacity: 0.8;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: calc(200px + 15vw);; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0; 
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar1, #snackbar2, #snackbar3, #snackbar4 {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: rgba(0,0,0,0.7); /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  top: 10px; /* 30px from the top */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar1.show, #snackbar2.show, #snackbar3.show, #snackbar4.show {
+  visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 10px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 10px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 10px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 10px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
